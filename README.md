@@ -7,7 +7,7 @@ Instructions
 ============
 
 1.) Agent calibration
-You should to know how many items can be pulled from your agent. Setup agent to load provided zabbix_module_stress module and execute agent [stress test](https://github.com/jangaraj/zabbix-agent-stress-test):
+You should to know how many items can be pulled from your agent. Setup agent to load provided ([Zabbix doc](https://www.zabbix.com/documentation/2.4/manual/config/items/loadablemodules)) zabbix_module_stress module and execute agent [stress test](https://github.com/jangaraj/zabbix-agent-stress-test):
 
 ```
 [root@zabbix-server]# ./zabbix-agent-stress-test.py -s <remote_agent_ip> -k "stress.ping[]" -t 20
@@ -58,9 +58,6 @@ Database server is usually bottleneck of Zabbix, so be prepared for detailed DB 
 Use only hosts with configured zabbix agents for stress test. Stress templates contain a huge number of items collected every second - they generate stress for. Wait 10 minutes before assigning additional performance template and keep your eyes on performance metrics.
 If you have import error "File is too big, max upload size is nnnnn bytes.", then you need to increase php config *upload_max_filesize* value - at least 10MB and *memory_limit* value - at least 512MB.
 
-
-
-
 4.) Unlink and clear stress templates  
 
 Build
@@ -78,14 +75,6 @@ Available items
 | **stress.ping[\<anything\>]** | Return value is always int 1 |  
 | **stress.echo[\<message\>]**  | Return value is string message from parameter |
 | **stress.random[from,to]**  | Return value in defined range, e.g. *stress.random[1,1000]* | 
-
-Installation
-============
-
-* Import provided template TODO.
-* Configure your Zabbix agent(s) - load downloaded/compiled zabbix_module_stress.so<br>
-https://www.zabbix.com/documentation/2.4/manual/config/items/loadablemodules
-
 
 Compilation
 ===========
