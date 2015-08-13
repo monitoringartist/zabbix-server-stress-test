@@ -5,7 +5,7 @@ This is basic synthetic stress test. It's more complicated practically, e.g. you
 
 Please donate to author, so he can continue to publish another awesome projects for free:
 
-[![Paypal donate button](http://jangaraj.com/img/github-donate-button.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8LB6J222WRUZ4)
+[![Paypal donate button](http://monitoringartist.com/img/github-donate-button.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8LB6J222WRUZ4)
 
 Instructions
 ============
@@ -13,8 +13,8 @@ Instructions
 **1. Agent setup**
 
 You will need a few remote agents for monitoring. One agent can provide 5k nvps typically. You need to verify this value before testing.
-First you need to setup agent to load provided [zabbix_module_stress.so](https://drone.io/github.com/jangaraj/zabbix-server-stress-test/files/zabbix24/src/modules/zabbix_module_stress/zabbix_module_stress.so) module (for RHEL 7, CentOS 7, Ubuntu 14, ...).
-[![Build Status](https://drone.io/github.com/jangaraj/zabbix-server-stress-test/status.png)](https://drone.io/github.com/jangaraj/zabbix-server-stress-test/latest)<br>
+First you need to setup agent to load provided [zabbix_module_stress.so](https://drone.io/github.com/monitoringartist/zabbix-server-stress-test/files/zabbix24/src/modules/zabbix_module_stress/zabbix_module_stress.so) module (for RHEL 7, CentOS 7, Ubuntu 14, ...).
+[![Build Status](https://drone.io/github.com/monitoringartist/zabbix-server-stress-test/status.png)](https://drone.io/github.com/monitoringartist/zabbix-server-stress-test/latest)<br>
 
 Basically you need to setup 2 agents settings:
 
@@ -37,13 +37,13 @@ Basic compilation steps:
     ./configure --enable-agent
     mkdir src/modules/zabbix_module_stress
     cd src/modules/zabbix_module_stress
-    wget https://raw.githubusercontent.com/jangaraj/zabbix-server-stress-test/master/src/modules/zabbix_module_stress/zabbix_module_stress.c
-    wget https://raw.githubusercontent.com/jangaraj/zabbix-server-stress-test/master/src/modules/zabbix_module_stress/Makefile
+    wget https://raw.githubusercontent.com/monitoringartist/zabbix-server-stress-test/master/src/modules/zabbix_module_stress/zabbix_module_stress.c
+    wget https://raw.githubusercontent.com/monitoringartist/zabbix-server-stress-test/master/src/modules/zabbix_module_stress/Makefile
     make
 
 Output will be binary file (dynamically linked shared object library) zabbix_module_stress.so, which can be loaded by Zabbix agent.
 
-When stress module is loaded, you shoult to execute [Zabbix agent stress test](https://github.com/jangaraj/zabbix-agent-stress-test) to determinate, 
+When stress module is loaded, you shoult to execute [Zabbix agent stress test](https://github.com/monitoringartist/zabbix-agent-stress-test) to determinate, 
 how many npvs can be provided by agent. It vary on used HW and network latency and agent config (e.g. *StartAgents* settings).  
 
 ```
@@ -98,7 +98,7 @@ so be prepared for detailed DB monitoring. Use proper DB template and especially
 
 Screen for Zabbix performance overview is recommended. Example:
 
-![Zabbix server performance screen](https://raw.githubusercontent.com/jangaraj/zabbix-server-stress-test/master/doc/zabbix-server-screen.png)
+![Zabbix server performance screen](https://raw.githubusercontent.com/monitoringartist/zabbix-server-stress-test/master/doc/zabbix-server-screen.png)
 
 **3. Import and link provided stress templates**
 
@@ -133,7 +133,7 @@ Recommended documentation
 Author
 ======
 
-[Devops Monitoring zExpert](http://www.jangaraj.com), who loves monitoring systems, which start with letter Z. Those are Zabbix and Zenoss. [LinkedIn] (http://uk.linkedin.com/in/jangaraj/).
+[Devops Monitoring zExpert](http://www.jangaraj.com), who loves monitoring systems, which start with letter Z. Those are Zabbix and Zenoss.
 
 Professional monitoring services:
 
