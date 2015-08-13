@@ -1,7 +1,11 @@
 Zabbix Server Stress Test
 =========================
 
-This is basic synthetic stress test. It's more complicated practically, e.g. you have triggers, which need to be evaluated, .... It provides basic picture about performance of your Zabbix server. 
+This is basic synthetic stress test. It's more complicated practically, e.g. you have triggers, which need to be evaluated, .... It provides basic picture about performance of your Zabbix server.
+
+Please donate author, so he can continue to publish another awesome projects for free:
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8LB6J222WRUZ4)
 
 Instructions
 ============
