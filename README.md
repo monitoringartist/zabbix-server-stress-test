@@ -3,11 +3,9 @@ Zabbix Server Stress Test
 
 This is basic synthetic stress test. It's more complicated practically, e.g. you have triggers, which need to be evaluated, .... It provides basic picture about performance of your Zabbix server.
 
-Please donate author, so he can continue to publish another awesome projects for free:
+Please donate to author, so he can continue to publish another awesome projects for free:
 
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8LB6J222WRUZ4)
-
-[![paypal](http://jangaraj.com/img/github-donate-button.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8LB6J222WRUZ4)
+[![Paypal donate button](http://jangaraj.com/img/github-donate-button.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8LB6J222WRUZ4)
 
 Instructions
 ============
@@ -114,3 +112,6 @@ Author
 ======
 
 [Devops Monitoring zExpert](http://www.jangaraj.com), who loves monitoring systems, which start with letter Z. Those are Zabbix and Zenoss. [LinkedIn] (http://uk.linkedin.com/in/jangaraj/).
+
+Professional monitoring services:
+[![Monitoring Artist](http://monitoringartist.com/img/github-monitoring-artist-logo.jpg)](http://www.monitoringartist.com)
