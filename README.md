@@ -10,8 +10,42 @@ Please donate to author, so he can continue to publish another awesome projects 
 Instructions
 ============
 
-1.) Agent calibration
-You should to know how many items can be pulled from your agent. Setup agent to load provided ([Zabbix doc](https://www.zabbix.com/documentation/2.4/manual/config/items/loadablemodules)) zabbix_module_stress module and execute agent [stress test](https://github.com/jangaraj/zabbix-agent-stress-test):
+1. Agent setup
+
+You will need a few remote agents for monitoring. One agent can provide 5k nvps typically. You need to verify this value before testing.
+First you need to setup agent to load provided [zabbix_module_stress.so module (RHEL 7, CentOS 7, Ubuntu 14, ...)](https://drone.io/github.com/jangaraj/zabbix-server-stress-test/files/zabbix24/src/modules/zabbix_module_stress/zabbix_module_stress.so).
+[![Build Status](https://drone.io/github.com/jangaraj/zabbix-server-stress-test/status.png)](https://drone.io/github.com/jangaraj/zabbix-server-stress-test/latest)<br>
+
+Basically you need to setup 2 agents settings:
+
+```
+LoadModulePath=<absolute_path_to_stress_module>/
+LoadModule=zabbix_module_stress.so
+``` 
+
+Restart agent and check agent log for any module problems (e.g. problem with read permission).
+See official [Zabbix module doc](https://www.zabbix.com/documentation/2.4/manual/config/items/loadablemodules)) for more informations.
+
+You have to compile module, if provided binary module doesn't work on your system.
+Basic compilation steps:
+
+    cd ~
+    mkdir zabbix24
+    cd zabbix24
+    svn co svn://svn.zabbix.com/branches/2.4 .
+    ./bootstrap.sh
+    ./configure --enable-agent
+    mkdir src/modules/zabbix_module_stress
+    cd src/modules/zabbix_module_stress
+    wget https://raw.githubusercontent.com/jangaraj/zabbix-server-stress-test/master/src/modules/zabbix_module_stress/zabbix_module_stress.c
+    wget https://raw.githubusercontent.com/jangaraj/zabbix-server-stress-test/master/src/modules/zabbix_module_stress/Makefile
+    make
+
+Output will be binary file (dynamically linked shared object library) zabbix_module_stress.so, which can be loaded by zabbix agent.
+
+When stress module is loaded, you can run [Zabbix agent stress test](https://github.com/jangaraj/zabbix-agent-stress-test) to determinate, 
+how many npvs can be provided by agent. It vary on used HW and network latency and agent config (e.g. *StartAgents* settings).  
+
 
 ```
 [root@zabbix-server]# ./zabbix-agent-stress-test.py -s <remote_agent_ip> -k "stress.ping[]" -t 20
@@ -54,22 +88,15 @@ Avg rate based on total execution time and success connections: 6637.30 qps
 
 This agent can provide avg 6637.30 new values (queries) per second for Zabbix server stress test. Calculate with lower value, e.g. 5k value to be safe. Calibrate another agent, so sum of save agent values will be at least equal to required Zabbix server. For example you will need 5 agents with 5k qps for Zabbix server stress of 50k nvps. Don't use localhost zabbix agent.
 
-2.) Prepare performance metrics
+2. Prepare performance metrics
 Application template for Zabbix Server is provided out of the box. Be sure, that template is assigned and data are collected. You will need also OS performance metrics (CPU, mem, HDD, ...), so also OS template (usually OS Linux) should be assigned and metrics should be collected.
 Database server is usually bottleneck of Zabbix, so be prepared for detailed DB monitoring. Use proper DB template and especially watch IOPs metrics (*iostat -xd 10 10*)
 
-3.) Import and link provided stress templates
+3. Import and link provided stress templates
 Use only hosts with configured zabbix agents for stress test. Stress templates contain a huge number of items collected every second - they generate stress for. Wait 10 minutes before assigning additional performance template and keep your eyes on performance metrics.
 If you have import error "File is too big, max upload size is nnnnn bytes.", then you need to increase php config *upload_max_filesize* value - at least 10MB and *memory_limit* value - at least 512MB.
 
-4.) Unlink and clear stress templates  
-
-Build
-=====
-
-[Download latest build (RHEL 7, CentOS 7, Ubuntu 14, ...)](https://drone.io/github.com/jangaraj/zabbix-server-stress-test/files/zabbix24/src/modules/zabbix_module_stress/zabbix_module_stress.so)
-[![Build Status](https://drone.io/github.com/jangaraj/zabbix-server-stress-test/status.png)](https://drone.io/github.com/jangaraj/zabbix-server-stress-test/latest)<br>
-If provided build doesn't work on your system, please see section [Compilation](#compilation). 
+4. Unlink and clear stress templates  
 
 Available items
 ===============
@@ -79,26 +106,6 @@ Available items
 | **stress.ping[\<anything\>]** | Return value is always int 1 |  
 | **stress.echo[\<message\>]**  | Return value is string message from parameter |
 | **stress.random[from,to]**  | Return value in defined range, e.g. *stress.random[1,1000]* | 
-
-Compilation
-===========
-
-You have to compile module, if provided binary doesn't work on your system.
-Basic compilation steps:
-
-    cd ~
-    mkdir zabbix24
-    cd zabbix24
-    svn co svn://svn.zabbix.com/branches/2.4 .
-    ./bootstrap.sh
-    ./configure --enable-agent
-    mkdir src/modules/zabbix_module_stress
-    cd src/modules/zabbix_module_stress
-    wget https://raw.githubusercontent.com/jangaraj/zabbix-server-stress-test/master/src/modules/zabbix_module_stress/zabbix_module_stress.c
-    wget https://raw.githubusercontent.com/jangaraj/zabbix-server-stress-test/master/src/modules/zabbix_module_stress/Makefile
-    make
-
-Output will be binary file (dynamically linked shared object library) zabbix_module_stress.so, which can be loaded by zabbix agent.
 
 Recommended documentation
 =========================
