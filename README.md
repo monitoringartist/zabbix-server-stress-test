@@ -7,6 +7,8 @@ Please donate author, so he can continue to publish another awesome projects for
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8LB6J222WRUZ4)
 
+[![paypal](http://jangaraj.com/img/github-donate-button.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8LB6J222WRUZ4)
+
 Instructions
 ============
 
