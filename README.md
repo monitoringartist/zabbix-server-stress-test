@@ -90,6 +90,7 @@ Calibrate another agent, so sum of save agent values will be at least equal to r
 for Zabbix server 50k nvps stress test. Don't use Zabbix agent on localhost of your Zabbix server.
 
 **2. Prepare performance metrics**
+
 Application template for Zabbix Server is provided out of the box. Be sure, that template is assigned and data are collected. 
 You will need also OS performance metrics (CPU, mem, HDD, ...), so also OS template (usually OS Linux) 
 should be assigned and metrics should be collected. Database server is usually bottleneck of Zabbix, 
@@ -100,12 +101,14 @@ Screen for Zabbix performance overview is recommended. Example:
 ![Zabbix server performance screen](https://raw.githubusercontent.com/jangaraj/zabbix-server-stress-test/master/doc/zabbix-server-screen.png)
 
 **3. Import and link provided stress templates**
+
 Stress templates contain a huge number of items collected every second - they generate stress. 
 If you have import error "File is too big, max upload size is nnnnn bytes.", then you need to increase php config *upload_max_filesize* value - at least 10MB and *memory_limit* value - at least 512MB.
 Link stress template to host. Use only hosts/Zabbix agents with configured Zabbix stress module. 
 Wait 10 minutes before linking additional stress template and keep your eyes on performance metrics.
 
-**4. Evaluate graphs and bottlenecks
+**4. Evaluate graphs and bottlenecks**
+
 Tune your DB/Zabbix server configurations.
 
 **5. Unlink and clear data stress templates**  
