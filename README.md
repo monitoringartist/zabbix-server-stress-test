@@ -1,20 +1,28 @@
 Zabbix Server Stress Test
 =========================
 
-This is basic synthetic stress test. It's more complicated practically, e.g. you have triggers, which need to be evaluated, .... It provides basic picture about performance of your Zabbix server.
+This is basic synthetic stress test. It's more complicated practically, e.g. you 
+have triggers, which need to be evaluated, .... It provides basic picture about 
+performance of your Zabbix server.
 
-Please donate to author, so he can continue to publish another awesome projects for free:
+Please donate to author, so he can continue to publish another awesome projects 
+for free:
 
-[![Paypal donate button](http://jangaraj.com/img/github-donate-button02.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8LB6J222WRUZ4)
+[![Paypal donate button](http://jangaraj.com/img/github-donate-button02.png)]
+(https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8LB6J222WRUZ4)
 
 Instructions
 ============
 
 **1. Agent setup**
 
-You will need a few remote agents for monitoring. One agent can provide 5k nvps typically. You need to verify this value before testing.
-First you need to setup agent to load provided [zabbix_module_stress.so](https://drone.io/github.com/monitoringartist/zabbix-server-stress-test/files/zabbix24/src/modules/zabbix_module_stress/zabbix_module_stress.so) module (for RHEL 7, CentOS 7, Ubuntu 14, ...).
-[![Build Status](https://drone.io/github.com/monitoringartist/zabbix-server-stress-test/status.png)](https://drone.io/github.com/monitoringartist/zabbix-server-stress-test/latest)<br>
+You will need a few remote agents for monitoring. One agent can provide 5k nvps 
+typically. You need to verify this value before testing.
+First you need to setup agent to load provided [zabbix_module_stress.so]
+(https://drone.io/github.com/monitoringartist/zabbix-server-stress-test/files/zabbix24/src/modules/zabbix_module_stress/zabbix_module_stress.so) 
+module (for RHEL 7, CentOS 7, Ubuntu 14, ...).
+[![Build Status](https://drone.io/github.com/monitoringartist/zabbix-server-stress-test/status.png)]
+(https://drone.io/github.com/monitoringartist/zabbix-server-stress-test/latest)
 
 Basically you need to setup 2 agents settings:
 
@@ -23,8 +31,11 @@ LoadModulePath=<absolute_path_to_stress_module>/
 LoadModule=zabbix_module_stress.so
 ``` 
 
-Restart Zabbix agent and check Zabbix agent log for any module problems (e.g. problem with read permission).
-See official [Zabbix module doc](https://www.zabbix.com/documentation/2.4/manual/config/items/loadablemodules)) for more informations.
+Restart Zabbix agent and check Zabbix agent log for any module problems (e.g. 
+problem with read permission).
+See official [Zabbix module doc]
+(https://www.zabbix.com/documentation/2.4/manual/config/items/loadablemodules) 
+for more informations.
 
 You have to compile module, if provided binary module doesn't work on your system.
 Basic compilation steps:
@@ -41,10 +52,13 @@ Basic compilation steps:
     wget https://raw.githubusercontent.com/monitoringartist/zabbix-server-stress-test/master/src/modules/zabbix_module_stress/Makefile
     make
 
-Output will be binary file (dynamically linked shared object library) zabbix_module_stress.so, which can be loaded by Zabbix agent.
+Output will be binary file (dynamically linked shared object library) 
+zabbix_module_stress.so, which can be loaded by Zabbix agent.
 
-When stress module is loaded, you shoult to execute [Zabbix agent stress test](https://github.com/monitoringartist/zabbix-agent-stress-test) to determinate, 
-how many npvs can be provided by agent. It vary on used HW and network latency and agent config (e.g. *StartAgents* settings).  
+When stress module is loaded, you shoult to execute [Zabbix agent stress test]
+(https://github.com/monitoringartist/zabbix-agent-stress-test) to determinate, 
+how many npvs can be provided by agent. It vary on used HW and network latency 
+and agent config (e.g. *StartAgents* settings).  
 
 ```
 [root@zabbix-server]# ./zabbix-agent-stress-test.py -s <remote_agent_ip> -k "stress.ping[]" -t 20
@@ -85,31 +99,40 @@ Success: 482513 Errors: 0       Avg rate: 5792.09 qps   Execution time: 20.70 se
 Avg rate based on total execution time and success connections: 6637.30 qps
 ```
 
-This agent can provide avg 6637.30 new values (queries) per second for Zabbix server stress test. Calculate with lower value, e.g. 5k value to be safe.  
-Calibrate another agent, so sum of save agent values will be at least equal to required Zabbix server. It means that you will need 10 agents with similar performance with 5k qps 
-for Zabbix server 50k nvps stress test. Don't use Zabbix agent on localhost of your Zabbix server.
+This agent can provide avg 6637.30 new values (queries) per second for Zabbix 
+server stress test. Calculate with lower value, e.g. 5k value to be safe.  
+Calibrate another agent, so sum of save agent values will be at least equal to 
+required Zabbix server. It means that you will need 10 agents with similar 
+performance with 5k qps for Zabbix server 50k nvps stress test. Don't use Zabbix 
+agent on localhost of your Zabbix server.
 
 **2. Prepare performance metrics**
 
-Application template for Zabbix Server is provided out of the box. Be sure, that template is assigned and data are collected. 
-You will need also OS performance metrics (CPU, mem, HDD, ...), so also OS template (usually OS Linux) 
-should be assigned and metrics should be collected. Database server is usually bottleneck of Zabbix, 
-so be prepared for detailed DB monitoring. Use proper DB template and especially watch IOPs metrics (*iostat -xd 10 10*)
+Application template for Zabbix Server is provided out of the box. Be sure, that 
+template is assigned and data are collected. 
+You will need also OS performance metrics (CPU, mem, HDD, ...), so also OS 
+template (usually OS Linux) should be assigned and metrics should be collected. 
+Database server is usually bottleneck of Zabbix, so be prepared for detailed DB 
+monitoring. Use proper DB template and especially watch IOPs metrics (*iostat -xd 10 10*)
 
 Screen for Zabbix performance overview is recommended. Example:
 
-![Zabbix server performance screen](https://raw.githubusercontent.com/monitoringartist/zabbix-server-stress-test/master/doc/zabbix-server-screen.png)
+![Zabbix server performance screen]
+(https://raw.githubusercontent.com/monitoringartist/zabbix-server-stress-test/master/doc/zabbix-server-screen.png)
 
 **3. Import and link provided stress templates**
 
-Stress templates contain a huge number of items collected every second - they generate stress. 
-If you have import error "File is too big, max upload size is nnnnn bytes.", then you need to increase php config *upload_max_filesize* value - at least 10MB and *memory_limit* value - at least 512MB.
-Link stress template to host. Use only hosts/Zabbix agents with configured Zabbix stress module. 
-Wait 10 minutes before linking additional stress template and keep your eyes on performance metrics.
+Stress templates contain a huge number of items collected every second - they 
+generate stress. If you have import error "File is too big, max upload size is 
+nnnnn bytes.", then you need to increase php config *upload_max_filesize* value 
+- at least 10MB and *memory_limit* value - at least 512MB (Don't forget to 
+restart your web server). Link stress template to host. Use only hosts/Zabbix 
+agents with configured Zabbix stress module. Wait 10 minutes before linking 
+additional stress template and keep your eyes on Zabbix server performance metrics.
 
 **4. Evaluate graphs and bottlenecks**
 
-Tune your DB/Zabbix server configurations.
+Tune your DB/Zabbix server/Zabbix agent configurations.
 
 **5. Unlink and clear data stress templates**  
 
@@ -133,8 +156,10 @@ Recommended documentation
 Author
 ======
 
-[Devops Monitoring zExpert](http://www.jangaraj.com), who loves monitoring systems, which start with letter Z. Those are Zabbix and Zenoss.
+[Devops Monitoring zExpert](http://www.jangaraj.com), who loves monitoring 
+systems, which start with letter Z. Those are Zabbix and Zenoss.
 
 Professional monitoring services:
 
-[![Monitoring Artist](http://monitoringartist.com/img/github-monitoring-artist-logo.jpg)](http://www.monitoringartist.com)
+[![Monitoring Artist](http://monitoringartist.com/img/github-monitoring-artist-logo.jpg)]
+(http://www.monitoringartist.com)
