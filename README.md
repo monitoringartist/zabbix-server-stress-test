@@ -40,6 +40,7 @@ for more information.
 You have to compile module, if the provided binary module doesn't work on your system.
 Basic compilation steps:
 
+    # Required CentOS/RHEL tools: yum install -y svn autoconf automake gcc
     cd ~
     mkdir zabbix24
     cd zabbix24
