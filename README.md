@@ -124,8 +124,8 @@ Screen for Zabbix performance overview is recommended. Example:
 
 Stress templates contain a huge number of items collected every second - they 
 generate stress. If you have import error "File is too big, max upload size is 
-nnnnn bytes.", then you need to increase the php config *upload_max_filesize* value 
-- at least 10MB and *memory_limit* value - at least 512MB (Don't forget to 
+nnnnn bytes.", then you need to increase the php config *upload_max_filesize* value - 
+at least 10MB and *memory_limit* value - at least 512MB (Don't forget to 
 restart your web server). Link stress template to host. Use only hosts/Zabbix 
 agents with configured Zabbix stress module. Wait 10 minutes before linking 
 additional stress template and keep your eyes on Zabbix server performance metrics.
