@@ -41,10 +41,11 @@ You have to compile module, if the provided binary module doesn't work on your s
 Basic compilation steps:
 
     # Required CentOS/RHEL tools: yum install -y svn autoconf automake gcc
+    # Required Debian/Ubuntu tools: apt-get install -y wget autoconf automake gcc subversion make pkg-config
     cd ~
-    mkdir zabbix24
-    cd zabbix24
-    svn co svn://svn.zabbix.com/branches/2.4 .
+    mkdir zabbix30
+    cd zabbix30
+    svn co svn://svn.zabbix.com/branches/3.0 .
     ./bootstrap.sh
     ./configure --enable-agent
     mkdir src/modules/zabbix_module_stress
