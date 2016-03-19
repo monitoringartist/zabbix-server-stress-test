@@ -1,5 +1,4 @@
-Zabbix Server Stress Test
-=========================
+# Zabbix Server Stress Test
 
 This is basic synthetic stress test. It's more complicated practically, e.g. you 
 have triggers, which need to be evaluated, .... It provides basic picture about 
@@ -11,8 +10,7 @@ for free:
 [![Paypal donate button](http://jangaraj.com/img/github-donate-button02.png)]
 (https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8LB6J222WRUZ4)
 
-Instructions
-============
+# Instructions
 
 **1. Agent setup**
 
@@ -138,25 +136,26 @@ Tune your DB/Zabbix server/Zabbix agent configurations.
 
 **5. Unlink and clear data stress templates**  
 
-Available items
-===============
+# Available items
 
 | Key | Description |
 | --- | ----------- |
 | **stress.ping[\<anything\>]** | Return value is always int 1 |  
 | **stress.echo[\<message\>]**  | Return value is string message from parameter |
-| **stress.random[from,to]**  | Return value in defined range, e.g. *stress.random[1,1000]* | 
+| **stress.random[from,to]**  | Return value in defined range, e.g. *stress.random[1,1000]* |
 
-Recommended documentation
-=========================
+# Dockerized version
+
+Visit project https://github.com/monitoringartist/zabbix-agent-xxl 
+
+# Recommended documentation
 
 - https://www.zabbix.com/documentation/2.4/manual/appendix/performance_tuning
 - https://www.percona.com/blog/2014/11/14/optimizing-mysql-zabbix/
 - http://www.zabbix.com/files/Presentations/Tune_your_Zabbix_for_Better_Performance_-_eng.ppt
 - https://ma.ttias.be/debugging-performance-problems-zabbix-internal-items/
 
-Author
-======
+# Author
 
 [Devops Monitoring zExpert](http://www.jangaraj.com), who loves monitoring 
 systems, which start with letter Z. Those are Zabbix and Zenoss.
