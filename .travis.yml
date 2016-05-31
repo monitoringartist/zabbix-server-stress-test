@@ -36,5 +36,5 @@ script:
 
 env:
   global:
-  - ENCRYPTION_LABEL: "469b4b5a68a6"
+  - ENCRYPTION_LABEL: "fe31b90a0e35"
   - COMMIT_AUTHOR_EMAIL: "jan.garaj@gmail.com"
