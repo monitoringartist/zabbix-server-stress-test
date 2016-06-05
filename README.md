@@ -32,11 +32,17 @@ LoadModule=zabbix_module_stress.so
 Restart Zabbix agent and check Zabbix agent log for any module problems (e.g. 
 problem with read permission).
 See official [Zabbix module doc]
-(https://www.zabbix.com/documentation/2.4/manual/config/items/loadablemodules) 
+(https://www.zabbix.com/documentation/3.0/manual/config/items/loadablemodules) 
 for more information.
 
-You have to compile module, if the provided binary module doesn't work on your system.
-Basic compilation steps:
+Download latest build of zabbix_module_stress.so only for Zabbix 3.0 agents:
+
+| [Red Hat 7 / CentOS 7](https://github.com/monitoringartist/zabbix-server-stress-test/raw/gh-pages/centos7/zabbix_module_stress.so) | [Debian 8](https://github.com/monitoringartist/zabbix-server-stress-test/raw/gh-pages/debian8/zabbix_module_stress.so) | [Ubuntu 14](https://github.com/monitoringartist/zabbix-server-stress-test/raw/gh-pages/ubuntu14/zabbix_module_stress.so) |
+| :---: | :---: | :---: |
+| [![Red Hat 7](doc/logo_redhat.png)](https://github.com/monitoringartist/zabbix-server-stress-test/raw/gh-pages/centos7/zabbix_module_stress.so) [![CentOS 7](doc/logo_centos.png)](https://github.com/monitoringartist/zabbix-server-stress-test/raw/gh-pages/centos7/zabbix_module_stress.so) | [![Debian 8](doc/logo_debian.png)](https://github.com/monitoringartist/zabbix-server-stress-test/raw/gh-pages/debian8/zabbix_module_stress.so)  | [![Ubuntu 14](doc/logo_ubuntu.png)](https://github.com/monitoringartist/zabbix-server-stress-test/raw/gh-pages/ubuntu14/zabbix_module_stress.so) |
+
+You have to compile module, if the provided binary module doesn't work on your 
+system or you are not using Zabbix 3.0. Basic compilation steps:
 
     # Required CentOS/RHEL tools: yum install -y svn autoconf automake gcc
     # Required Debian/Ubuntu tools: apt-get install -y wget autoconf automake gcc subversion make pkg-config
@@ -51,6 +57,10 @@ Basic compilation steps:
     wget https://raw.githubusercontent.com/monitoringartist/zabbix-server-stress-test/master/src/modules/zabbix_module_stress/zabbix_module_stress.c
     wget https://raw.githubusercontent.com/monitoringartist/zabbix-server-stress-test/master/src/modules/zabbix_module_stress/Makefile
     make
+
+Or you can check [folder dockerfiles]
+(https://github.com/monitorinartist/zabbix-server-stress-test/tree/master/dockerfiles),
+where Dockerfiles for different OS/Zabbix versions can be customized.
 
 Output will be a binary file (dynamically linked shared object library) 
 zabbix_module_stress.so, which can be loaded by Zabbix agent.
