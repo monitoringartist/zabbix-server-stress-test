@@ -1,1 +1,1 @@
-e27cf114fa099e9f7a829b5c936e7b47bf9bd219  zabbix_module_docker.so
+f78d5be5955938e681feb5bfa1edbb328e5d25f7  zabbix_module_stress.so
