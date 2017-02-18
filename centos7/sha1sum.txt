@@ -1,1 +1,1 @@
-88f1ee1c7cf9b7ea24290353ba2b5d1b73e814a1  zabbix_module_stress.so
+27cbcb7380a8da582533a9a0671bcc705b1e83cd  zabbix_module_stress.so
