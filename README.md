@@ -7,8 +7,7 @@ performance of your Zabbix server.
 Please donate to author, so he can continue to publish other awesome projects 
 for free:
 
-[![Paypal donate button](http://jangaraj.com/img/github-donate-button02.png)]
-(https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8LB6J222WRUZ4)
+[![Paypal donate button](http://jangaraj.com/img/github-donate-button02.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8LB6J222WRUZ4)
 
 # Instructions
 
@@ -19,8 +18,6 @@ typically. You need to verify this value before testing.
 First you need to setup agent to load provided [zabbix_module_stress.so]
 (https://drone.io/github.com/monitoringartist/zabbix-server-stress-test/files/zabbix24/src/modules/zabbix_module_stress/zabbix_module_stress.so) 
 module (for RHEL 7, CentOS 7, Ubuntu 14, ...).
-[![Build Status](https://drone.io/github.com/monitoringartist/zabbix-server-stress-test/status.png)]
-(https://drone.io/github.com/monitoringartist/zabbix-server-stress-test/latest)
 
 Basically you need to setup 2 agent settings:
 
