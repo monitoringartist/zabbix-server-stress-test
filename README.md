@@ -17,8 +17,7 @@ for free:
 
 You will need a few remote agents for monitoring. One agent can provide 5k nvps 
 typically. You need to verify this value before testing.
-First you need to setup agent to load provided [zabbix_module_stress.so]
-(https://drone.io/github.com/monitoringartist/zabbix-server-stress-test/files/zabbix24/src/modules/zabbix_module_stress/zabbix_module_stress.so) 
+First you need to setup agent to load provided [zabbix_module_stress.so](https://drone.io/github.com/monitoringartist/zabbix-server-stress-test/files/zabbix24/src/modules/zabbix_module_stress/zabbix_module_stress.so)
 module (for RHEL 7, CentOS 7, Ubuntu 14, ...).
 
 Basically you need to setup 2 agent settings:
@@ -30,8 +29,7 @@ LoadModule=zabbix_module_stress.so
 
 Restart Zabbix agent and check Zabbix agent log for any module problems (e.g. 
 problem with read permission).
-See official [Zabbix module doc]
-(https://www.zabbix.com/documentation/3.0/manual/config/items/loadablemodules) 
+See official [Zabbix module doc](https://www.zabbix.com/documentation/3.0/manual/config/items/loadablemodules)
 for more information.
 
 Download latest build of zabbix_module_stress.so only for Zabbix 3.0 agents:
@@ -61,17 +59,15 @@ wget https://raw.githubusercontent.com/monitoringartist/zabbix-server-stress-tes
 make
 ```
 
-Or you can check [folder dockerfiles]
-(https://github.com/monitorinartist/zabbix-server-stress-test/tree/master/dockerfiles),
+Or you can check [folder dockerfiles](https://github.com/monitorinartist/zabbix-server-stress-test/tree/master/dockerfiles),
 where Dockerfiles for different OS/Zabbix versions can be customized.
 
 Output will be a binary file (dynamically linked shared object library) 
 zabbix_module_stress.so, which can be loaded by Zabbix agent.
 
-When stress module is loaded, you should execute [Zabbix agent stress test]
-(https://github.com/monitoringartist/zabbix-agent-stress-test) to determine 
-how many npvs can be provided by the agent. It varies based on the used HW 
-and network latency and agent config (e.g. *StartAgents* setting).
+When stress module is loaded, you should execute [Zabbix agent stress test](https://github.com/monitoringartist/zabbix-agent-stress-test)
+to determine how many npvs can be provided by the agent. It varies based on the
+used HW and network latency and agent config (e.g. *StartAgents* setting).
 
 ```
 $ ./zabbix-agent-stress-test.py -s <remote_agent_ip> -k "stress.ping[]" -t 20
@@ -130,8 +126,7 @@ monitoring. Use proper DB template and especially watch IOPs metrics (*iostat -x
 
 Screen for Zabbix performance overview is recommended. Example:
 
-![Zabbix server performance screen]
-(https://raw.githubusercontent.com/monitoringartist/zabbix-server-stress-test/master/doc/zabbix-server-screen.png)
+![Zabbix server performance screen](https://raw.githubusercontent.com/monitoringartist/zabbix-server-stress-test/master/doc/zabbix-server-screen.png)
 
 **3. Import and link provided stress templates**
 
