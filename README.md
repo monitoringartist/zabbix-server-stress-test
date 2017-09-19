@@ -43,19 +43,23 @@ Download latest build of zabbix_module_stress.so only for Zabbix 3.0 agents:
 You have to compile module, if the provided binary module doesn't work on your 
 system or you are not using Zabbix 3.0. Basic compilation steps:
 
-    # Required CentOS/RHEL tools: yum install -y svn autoconf automake gcc
-    # Required Debian/Ubuntu tools: apt-get install -y wget autoconf automake gcc subversion make pkg-config
-    cd ~
-    mkdir zabbix30
-    cd zabbix30
-    svn co svn://svn.zabbix.com/branches/3.0 .
-    ./bootstrap.sh
-    ./configure --enable-agent
-    mkdir src/modules/zabbix_module_stress
-    cd src/modules/zabbix_module_stress
-    wget https://raw.githubusercontent.com/monitoringartist/zabbix-server-stress-test/master/src/modules/zabbix_module_stress/zabbix_module_stress.c
-    wget https://raw.githubusercontent.com/monitoringartist/zabbix-server-stress-test/master/src/modules/zabbix_module_stress/Makefile
-    make
+```bash
+# Required CentOS/RHEL apps:   yum install -y wget autoconf automake gcc svn pcre-devel
+# Required Debian/Ubuntu apps: apt-get install -y wget autoconf automake gcc subversion make pkg-config libpcre3-dev
+# Required Fedora apps:        dnf install -y wget autoconf automake gcc subversion make pcre-devel
+# Required openSUSE apps:      zypper install -y wget autoconf automake gcc subversion make pkg-config pcre-devel
+# Required Gentoo apps 1:      emerge net-misc/wget sys-devel/autoconf sys-devel/automake sys-devel/gcc
+# Required Gentoo apps 2:      emerge dev-vcs/subversion sys-devel/make dev-util/pkgconfig dev-libs/libpcre
+# Source, use your version:    svn export svn://svn.zabbix.com/tags/3.2.7 /usr/src/zabbix
+cd /usr/src/zabbix
+./bootstrap.sh
+./configure --enable-agent
+mkdir src/modules/zabbix_module_stress
+cd src/modules/zabbix_module_stress
+wget https://raw.githubusercontent.com/monitoringartist/zabbix-server-stress-test/master/src/modules/zabbix_module_stress/zabbix_module_stress.c
+wget https://raw.githubusercontent.com/monitoringartist/zabbix-server-stress-test/master/src/modules/zabbix_module_stress/Makefile
+make
+```
 
 Or you can check [folder dockerfiles]
 (https://github.com/monitorinartist/zabbix-server-stress-test/tree/master/dockerfiles),
@@ -70,7 +74,7 @@ how many npvs can be provided by the agent. It varies based on the used HW
 and network latency and agent config (e.g. *StartAgents* setting).
 
 ```
-[root@zabbix-server]# ./zabbix-agent-stress-test.py -s <remote_agent_ip> -k "stress.ping[]" -t 20
+$ ./zabbix-agent-stress-test.py -s <remote_agent_ip> -k "stress.ping[]" -t 20
 Warning: you are starting more threads, than your system has available CPU cores (8)!
 Starting 20 threads, host: remote_agent_ip:10050, key: stress.ping[]
 Success: 6077   Errors: 0       Avg rate: 6201.08 qps   Execution time: 1.00 sec
@@ -164,9 +168,9 @@ Visit project https://github.com/monitoringartist/dockbix-agent-xxl
 - http://www.zabbix.com/files/Presentations/Tune_your_Zabbix_for_Better_Performance_-_eng.ppt
 - https://ma.ttias.be/debugging-performance-problems-zabbix-internal-items/
 
-# Presentation
+# Presentations
 
-- Zabbix Conference 2017 [Xavier Schneider: User Experience: Migration from 2.4 to 3.2 in a big environment](https://www.zabbix.com/files/zabconf2017/xavier_schneider-migration_from_24_to_32_in_big_environment.pdf)
+- Zabbix Conference 2017 - Module used by [Xavier Schneider: User Experience: Migration from 2.4 to 3.2 in a big environment](https://www.zabbix.com/files/zabconf2017/xavier_schneider-migration_from_24_to_32_in_big_environment.pdf)
 
 # Author
 
