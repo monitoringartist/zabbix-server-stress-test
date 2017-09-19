@@ -1,10 +1,12 @@
+[<img src="https://monitoringartist.github.io/managed-by-monitoringartist.png" alt="Managed by Monitoring Artist: DevOps / Docker / Kubernetes / AWS ECS / Zabbix / Zenoss / Terraform / Monitoring" align="right"/>](http://www.monitoringartist.com 'DevOps / Docker / Kubernetes / AWS ECS / Zabbix / Zenoss / Terraform / Monitoring')
+
 # Zabbix Server Stress Test
 
 This is basic synthetic stress test. It's more complicated practically, e.g. you 
 have triggers, which need to be evaluated, .... It provides basic picture about 
 performance of your Zabbix server.
 
-Please donate to author, so he can continue to publish other awesome projects 
+Please donate to the author, so he can continue to publish other awesome projects
 for free:
 
 [![Paypal donate button](http://jangaraj.com/img/github-donate-button02.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8LB6J222WRUZ4)
@@ -153,7 +155,7 @@ Tune your DB/Zabbix server/Zabbix agent configurations.
 
 # Dockerized version
 
-Visit project https://github.com/monitoringartist/zabbix-agent-xxl 
+Visit project https://github.com/monitoringartist/dockbix-agent-xxl
 
 # Recommended documentation
 
@@ -162,17 +164,21 @@ Visit project https://github.com/monitoringartist/zabbix-agent-xxl
 - http://www.zabbix.com/files/Presentations/Tune_your_Zabbix_for_Better_Performance_-_eng.ppt
 - https://ma.ttias.be/debugging-performance-problems-zabbix-internal-items/
 
+# Presentation
+
+- Zabbix Conference 2017 [Xavier Schneider: User Experience: Migration from 2.4 to 3.2 in a big environment](https://www.zabbix.com/files/zabconf2017/xavier_schneider-migration_from_24_to_32_in_big_environment.pdf)
+
 # Author
 
 [Devops Monitoring Expert](http://www.jangaraj.com 'DevOps / Docker / Kubernetes / AWS ECS / Google GCP / Zabbix / Zenoss / Terraform / Monitoring'),
 who loves monitoring systems and cutting/bleeding edge technologies: Docker,
 Kubernetes, ECS, AWS, Google GCP, Terraform, Lambda, Zabbix, Grafana, Elasticsearch,
-Kibana, Prometheus, Sysdig, ...
+Kibana, Prometheus, Sysdig,...
 
 Summary:
-* 1000+ [GitHub](https://github.com/monitoringartist/) stars
-* 6000+ [Grafana dashboard](https://grafana.net/monitoringartist) downloads
-* 800 000+ [Docker image](https://hub.docker.com/u/monitoringartist/) pulls
+* 2000+ [GitHub](https://github.com/monitoringartist/) stars
+* 10 000+ [Grafana dashboard](https://grafana.net/monitoringartist) downloads
+* 1 000 000+ [Docker image](https://hub.docker.com/u/monitoringartist/) pulls
 
 Professional devops / monitoring / consulting services:
 
